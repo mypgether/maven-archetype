@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+  <properties resource="mybatis.properties"/>
+
+  <classPathEntry location="${mybatis.driver.path}"/>
+  <!-- MyBatis3Simple 这是默认值 不会有"by example"一类的方法，只有少量的动态SQL。 flat 该模型为每一张表只生成一个实体类。这个实体类包含表中的所有字段 -->
+  <context id="default" targetRuntime="MyBatis3" defaultModelType="flat">
+
+    <property name="autoDelimitKeywords" value="true"/>
+    <property name="beginningDelimiter" value="`"/>
+    <property name="endingDelimiter" value="`"/>
+
+    <!-- 该插件给实体类添加toString()方法 -->
+    <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+    <!-- 这个插件给由MBG生成的Java模型对象增加了equals和hashCode方法 -->
+    <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
+    <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+    <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin"/>
+    <!--<plugin type="${package}.dao.plugin.MySQLLimitPlugin" />-->
+    <!--<plugin type="${package}.dao.plugin.InsertSelectKeyPlugin" />-->
+    <!--<plugin type="${package}.dao.plugin.SelectForUpdatePlugin" />-->
+    <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+      <!--For example, to rename the generated example classes from xxxExample to xxxCriteria,specify Example$ for searchString and Criteria for replaceString. -->
+      <property name="searchString" value="Example$"/>
+      <property name="replaceString" value="Dal"/>
+    </plugin>
+
+    <!-- 不希望生成的注释中包含时间戳 -->
+    <commentGenerator>
+      <property name="suppressAllComments" value="true"/>
+      <property name="suppressDate" value="true"/>
+    </commentGenerator>
+
+
+    <!-- 数据库链接URL，用户名、密码 -->
+    <!--generateSimpleParameterMetadata=true为了避免java.sql.SQLException: Parameter metadata not available for the given statement错误
+            因为mysql驱动默认generateSimpleParameterMetadata=false只有设置为true metadata类型会 将每一个参数反射为Varchar类型
+        -->
+    <jdbcConnection driverClass="${mybatis.driverClass}" connectionURL="${mybatis.connectionURL}"
+      userId="${mybatis.userId}" password="${mybatis.password}">
+    </jdbcConnection>
+
+    <!--类型转换 -->
+    <javaTypeResolver>
+      <!-- 是否使用bigDecimal， false可自动转化以下类型（Long, Integer, Short, etc.） -->
+      <property name="forceBigDecimals" value="false"/>
+    </javaTypeResolver>
+
+    <!-- generate Model 生成模型的包名和位置-->
+    <javaModelGenerator targetPackage="${javaModelGenerator.targetPackage}"
+      targetProject="src/main/java">
+      <!-- 在targetPackage的基础上，根据数据库的schema再生成一层package -->
+      <property name="enableSubPackages" value="false"/>
+      <!-- 设置是否在getter方法中，对String类型字段调用trim()方法 -->
+      <property name="trimStrings" value="true"/>
+
+      <!-- 是否创建一个不可变的类 -->
+      <!--<property name="immutable" value="false" /> -->
+      <property name="rootClass" value="${package}.dao.base.BaseModel"/>
+      <!-- 是否 自动为每一个生成的类创建一个构造方法 -->
+      <property name="constructorBased" value="false"/>
+      <property name="useActualColumnNames" value="true"/>
+    </javaModelGenerator>
+
+    <!-- generate xml 生成modelBean和数据库表的对应关系xml-->
+    <sqlMapGenerator targetPackage="${sqlMapGenerator.targetPackage}"
+      targetProject="src/main/resources">
+      <property name="enableSubPackages" value="true"/>
+    </sqlMapGenerator>
+
+    <!-- generate Mapper 最后生成由xml定义的接口类-->
+    <javaClientGenerator type="XMLMAPPER" targetPackage="${javaClientGenerator.targetPackage}"
+      targetProject="src/main/java">
+      <property name="enableSubPackages" value="true"/>
+      <property name="rootInterface" value="${package}.dao.base.BaseDao"/>
+    </javaClientGenerator>
+
+    <!--这里包含SQL通配符，表示匹配所有demo开头的表 -->
+    <!--<table schema="" tableName="o_profile" domainObjectName="ProfilePO"-->
+    <!--enableInsert="false"-->
+    <!--enableDeleteByPrimaryKey="false"-->
+    <!--enableSelectByPrimaryKey="false"-->
+    <!--enableUpdateByPrimaryKey="false"-->
+    <!--enableCountByExample="false"-->
+    <!--enableDeleteByExample="false"-->
+    <!--enableSelectByExample="true"-->
+    <!--enableUpdateByExample="false">-->
+    <!--<columnOverride column="profile" javaType="String" jdbcType="VARCHAR"></columnOverride>-->
+    <!--<columnOverride column="schema" javaType="String" jdbcType="VARCHAR"></columnOverride>-->
+    <!--</table>-->
+  </context>
+</generatorConfiguration>

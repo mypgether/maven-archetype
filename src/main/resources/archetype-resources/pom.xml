@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.1.1.RELEASE</version>
+    <relativePath/>
+  </parent>
+
+  <groupId>${groupId}</groupId>
+  <artifactId>${artifactId}</artifactId>
+  <version>${version}</version>
+  <packaging>pom</packaging>
+
+  <name>${rootArtifactId} parent</name>
+  <description>${rootArtifactId} parent</description>
+
+  <properties>
+    <dubbo.springboot.version>0.2.0</dubbo.springboot.version>
+    <springboot.starter.version>2.1.1.RELEASE</springboot.starter.version>
+
+    <zkclient.version>0.10</zkclient.version>
+    <java.version>1.8</java.version>
+
+    <commons.beanutils.version>1.8.3</commons.beanutils.version>
+    <commons.codec.version>1.7</commons.codec.version>
+    <commons.collections.version>3.2.1</commons.collections.version>
+    <commons.lang.version>3.8.1</commons.lang.version>
+    <commons.io.version>2.4</commons.io.version>
+    <commons.pool.version>2.6.0</commons.pool.version>
+    <commons.dbcp.version>1.4</commons.dbcp.version>
+    <commons.configuration.version>1.10</commons.configuration.version>
+
+    <logback.version>1.1.8</logback.version>
+    <slf4j.version>1.7.25</slf4j.version>
+
+    <fastjson.version>1.1.46</fastjson.version>
+    <guava.version>17.0</guava.version>
+
+    <mybatis.springboot.version>1.3.2</mybatis.springboot.version>
+    <mybatis.generator.version>1.3.5</mybatis.generator.version>
+    <mysql.connector.version>5.1.21</mysql.connector.version>
+
+    <swagger.version>2.2.2</swagger.version>
+
+    <netflix.servo.version>0.7.9</netflix.servo.version>
+    <netflix.archaius.version>0.6.6</netflix.archaius.version>
+
+    <prometheus.version>0.6.0</prometheus.version>
+    <okhttp.version>3.8.1</okhttp.version>
+    <lombok.version>1.16.18</lombok.version>
+    <httclient.version>4.5.5</httclient.version>
+
+    <jmh.version>1.17.5</jmh.version>
+    <mockito.core.version>2.8.9</mockito.core.version>
+    <powermock.version>1.7.1</powermock.version>
+    <h2db.version>1.4.197</h2db.version>
+  </properties>
+
+  <modules>
+    <module>${rootArtifactId}-dao</module>
+    <module>${rootArtifactId}-core</module>
+    <module>${rootArtifactId}-facade</module>
+    <module>${rootArtifactId}-api</module>
+    <module>${rootArtifactId}-web</module>
+  </modules>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>Greenwich.RC2</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>com.101tec</groupId>
+        <artifactId>zkclient</artifactId>
+        <version>${zkclient.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.mybatis.generator</groupId>
+        <artifactId>mybatis-generator-core</artifactId>
+        <version>${mybatis.generator.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.mybatis.spring.boot</groupId>
+        <artifactId>mybatis-spring-boot-starter</artifactId>
+        <version>${mybatis.springboot.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>${mysql.connector.version}</version>
+      </dependency>
+
+      <!-- fastjson -->
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>fastjson</artifactId>
+        <version>${fastjson.version}</version>
+      </dependency>
+
+      <!-- log related-->
+      <dependency>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-classic</artifactId>
+        <version>${logback.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>${slf4j.version}</version>
+      </dependency>
+
+      <!-- test -->
+      <dependency>
+        <groupId>org.mockito</groupId>
+        <artifactId>mockito-core</artifactId>
+        <version>${mockito.core.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.powermock</groupId>
+        <artifactId>powermock-api-mockito2</artifactId>
+        <version>${powermock.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.powermock</groupId>
+        <artifactId>powermock-module-junit4</artifactId>
+        <version>${powermock.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>com.h2database</groupId>
+        <artifactId>h2</artifactId>
+        <version>${h2db.version}</version>
+        <scope>test</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <repositories>
+    <repository>
+      <id>spring-milestones</id>
+      <name>Spring Milestones</name>
+      <url>https://repo.spring.io/milestone</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+</project>

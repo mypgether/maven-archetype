@@ -1,0 +1,1 @@
+prometheusFilter=${package}.web.config.filter.PrometheusFilter

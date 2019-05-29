@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archetype-descriptor name="gether-archetype"
+  xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="
+            http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0
+            http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd">
+
+  <requiredProperties>
+    <requiredProperty key="groupId">
+      <defaultValue>com.gether.me</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="artifactId">
+      <defaultValue>demo</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="package">
+      <defaultValue>${groupId}</defaultValue>
+    </requiredProperty>
+  </requiredProperties>
+
+  <modules>
+    <module id="${rootArtifactId}-api" name="${rootArtifactId}-api" dir="__rootArtifactId__-api">
+      <fileSets>
+        <fileSet filtered="true" encoding="UTF-8" packaged="true">
+          <directory>src/main/java</directory>
+          <includes>
+            <include>**/*.*</include>
+          </includes>
+        </fileSet>
+        <!--<fileSet filtered="true" encoding="UTF-8" packaged="true">-->
+        <!--<directory>src/test/java</directory>-->
+        <!--<includes>-->
+        <!--<include>**/*.*</include>-->
+        <!--</includes>-->
+        <!--</fileSet>-->
+        <!--<fileSet encoding="UTF-8">-->
+        <!--<directory>src/main/resources</directory>-->
+        <!--<includes>-->
+        <!--<include>**/*.*</include>-->
+        <!--</includes>-->
+        <!--</fileSet>-->
+        <!--<fileSet encoding="UTF-8">-->
+        <!--<directory>src/test/resources</directory>-->
+        <!--<includes>-->
+        <!--<include>**/*.*</include>-->
+        <!--</includes>-->
+        <!--</fileSet>-->
+      </fileSets>
+    </module>
+    <module id="${rootArtifactId}-core" name="${rootArtifactId}-core" dir="__rootArtifactId__-core">
+      <fileSets>
+        <fileSet filtered="true" encoding="UTF-8" packaged="true">
+          <directory>src/main/java</directory>
+          <includes>
+            <include>**/*.*</include>
+          </includes>
+        </fileSet>
+        <fileSet filtered="true" encoding="UTF-8">
+          <directory>src/main/resources</directory>
+          <includes>
+            <include>**/*.*</include>
+          </includes>
+        </fileSet>
+      </fileSets>
+    </module>
+    <module id="${rootArtifactId}-dao" name="${rootArtifactId}-dao" dir="__rootArtifactId__-dao">
+      <fileSets>
+        <fileSet filtered="true" encoding="UTF-8" packaged="true">
+          <directory>src/main/java</directory>
+          <includes>
+            <include>**/*.*</include>
+          </includes>
+        </fileSet>
+        <fileSet filtered="true" encoding="UTF-8">
+          <directory>src/main/resources</directory>
+          <includes>
+            <include>**/*.*</include>
+            <include>mapper</include>
+          </includes>
+        </fileSet>
+      </fileSets>
+    </module>
+    <module id="${rootArtifactId}-facade" name="${rootArtifactId}-facade"
+      dir="__rootArtifactId__-facade">
+      <fileSets>
+        <fileSet filtered="true" encoding="UTF-8" packaged="true">
+          <directory>src/main/java</directory>
+          <includes>
+            <include>**/*.*</include>
+          </includes>
+        </fileSet>
+      </fileSets>
+    </module>
+    <module id="${rootArtifactId}-model" name="${rootArtifactId}-model"
+      dir="__rootArtifactId__-model">
+      <fileSets>
+        <fileSet filtered="true" encoding="UTF-8" packaged="true">
+          <directory>src/main/java</directory>
+          <includes>
+            <include>**/*.*</include>
+          </includes>
+        </fileSet>
+        <fileSet filtered="true" encoding="UTF-8">
+          <directory>src/main/resources</directory>
+          <includes>
+            <include>**/*.*</include>
+          </includes>
+        </fileSet>
+      </fileSets>
+    </module>
+    <module id="${rootArtifactId}-web" name="${rootArtifactId}-web" dir="__rootArtifactId__-web">
+      <fileSets>
+        <fileSet filtered="true" encoding="UTF-8" packaged="true">
+          <directory>src/main/java</directory>
+          <includes>
+            <include>**/*.*</include>
+          </includes>
+        </fileSet>
+        <fileSet filtered="true" encoding="UTF-8" packaged="true">
+          <directory>src/test/java</directory>
+          <includes>
+            <include>**/*.*</include>
+          </includes>
+        </fileSet>
+        <fileSet filtered="true" encoding="UTF-8">
+          <directory>src/main/resources</directory>
+          <includes>
+            <include>META-INF/**/*.*</include>
+            <include>**/*.properties</include>
+            <include>**/*.yml</include>
+            <include>**/*.txt</include>
+            <include>**/*.xml</include>
+            <include>**/*.md</include>
+          </includes>
+          <excludes>
+            <exclude>logback-spring.xml</exclude>
+          </excludes>
+        </fileSet>
+        <fileSet filtered="true" encoding="UTF-8">
+          <directory>src/test/resources</directory>
+          <includes>
+            <include>**/*.*</include>
+          </includes>
+        </fileSet>
+      </fileSets>
+    </module>
+  </modules>
+</archetype-descriptor>
